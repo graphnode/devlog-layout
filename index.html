@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Development Log</title>
+		<style>
+			body {
+				font-family: Corbel, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif;
+				text-shadow: 0 0 1px rgba(0, 0, 0, 0.01);
+				background-color: #f0f0f0;
+				margin: 0; padding: 0;
+			}
+			
+			#contents {
+				margin: 20px auto 40px;
+				width: 800px;
+			}
+			
+			#oldentries {
+				opacity: 0.5;
+				-webkit-transition-property: opacity;
+				-webkit-transition-duration: 0.5s;
+				-moz-transition-property: opacity;
+				-moz-transition-duration: 0.5s;
+				-o-transition-property: opacity;
+				-o-transition-duration: 0.5s;
+				transition-property: opacity;
+				transition-duration: 0.5s;
+			}
+			
+			#oldentries:hover {
+				opacity: 1.0;
+			}
+			
+			.entry {
+				width: 800px;
+				margin-bottom: 16px;
+			}
+			
+			.project-title {
+				font-weight: bold;
+				font-size: 1.6em;
+				color: #808080;
+				text-align: center;
+				width: 800px;
+				margin-top: -8px;
+			}
+			
+			.title {
+				font-weight: bold;
+				font-size: 1.4em;
+				color: #808080;
+				margin-bottom: 4px;
+			}
+			
+			.text {
+				position: relative;
+				padding: 8px 8px 8px 32px;
+				margin-bottom: 2px;
+				min-height: 16px;
+				font-size: 0.85em;
+			}
+			
+			.text:first-child {
+				-webkit-border-top-left-radius: 6px;
+			}
+			
+			.text > .icon {
+				position: absolute;
+				top: 8px; left: 8px;
+				width: 16px; height: 16px;
+			}
+			
+			.text.green {
+				background-color: #e4f992;
+				color: #62770e;
+			}
+			
+			.text.orange {
+				background-color: #f4cf6b;
+				color: #654800;
+				padding-left: 8px;
+			}
+			
+			.text.blue {
+				background-color: #d4ebf9;
+				color: #556b83;
+			}
+			
+			.text.blue > .icon {
+				background: transparent url('images/information.png');
+			}
+			
+			.text.red {
+				background-color: #f6b8b9;
+				color: #9c3e3f;
+			}
+			
+			.text.red > .icon {
+				background: transparent url('images/bug.png');
+			}
+			
+			.newbar {
+				border-bottom: 2px solid #f33;
+				height: 12px;
+				width: 816px;
+				margin: -4px 0 8px -6px;
+				font-size: 0.7em;
+				text-align: center;
+				text-shadow: 0 0 0;
+				color: #f33;
+			}
+			
+			.comment {
+				position: relative;
+				border: 1px solid #bbb;
+				background-color: #ddd;
+				margin: 4px 0;
+				color: #555;
+				padding: 4px 24px 4px 4px;
+			}
+			
+			.comment > .icon {
+				position: absolute;
+				right: 4px; top: 4px;
+				width: 16px; height: 16px;
+				background: transparent url('images/comment.png');
+			}
+			
+			.comment.merge {
+				margin-top: -5px;
+			}
+			
+		</style>
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				var entries = document.querySelectorAll('.entry');
+				var entry = entries[entries.length - 1];
+				
+				var arrow = document.createElement("canvas");
+				arrow.width = entry.offsetWidth;
+				arrow.height = 24;
+				arrow.style.marginTop = '-2px';
+				entry.appendChild(arrow);
+				
+				var context = arrow.getContext("2d");
+				context.fillStyle = "#f4cf6b";
+
+				context.beginPath();
+				context.moveTo(0, 0);
+				context.lineTo(arrow.width, 0);
+				context.lineTo(arrow.width / 2, arrow.height);
+				context.closePath();
+				context.fill();
+			}, true);
+		</script>
+	</head>
+	<body>
+		<div id="contents">
+			<div class="entry">
+				<div class="title">July 12, 2011</div>
+				<div class="text blue">
+					<div class="icon"></div>
+					<span>The new comments seems to be working. What do you think?</span>
+					<div class="comment">
+						<div class="icon"></div>
+						<span><b>Someone:</b> This is a comment. It's great!</span>
+					</div>
+					<span>The comments are supposed to be linked to pieces of text and not entries.</span>
+					<div class="comment">
+						<div class="icon"></div>
+						<span><b>Anonymous1:</b> Makes sense.</span>
+					</div>
+					<div class="comment merge">
+						<div class="icon"></div>
+						<span><b>Anonymous2:</b> I agree.</span>
+					</div>
+					<span>This allows users to specifically comment a small part of a huge entry.</span>
+					<div class="comment">
+						<div class="icon"></div>
+						<span><b>Monty Python:</b> SPAM SPAM SPAM SPAM SPAM SPAM-</span>
+					</div>
+					<span>Of course, there will be need for a way to hide comments or group them when there are tons of comments.<br>
+					Or the entry will end up as forum thread, instead of a design log entry.</span>
+				</div>
+				<div class="text green">
+					<div class="icon" style="background-image: url('images/page.png');"></div>
+					<b>Inline Comments:</b> added inline comments.
+				</div>
+				<div class="text red">
+					<div class="icon" style="background-image: url('images/error.png');"></div>
+					<b>Removed comments from the right side.</b>
+				</div>
+			</div>
+		
+			<div class="entry">
+				<div class="title">July 08, 2011</div>
+				<div class="text blue">
+					<div class="icon"></div>
+					<span>Images will be able to be zoomed in as necessary and also commented on.</span>
+				</div>
+				<div class="text green">
+					<div class="icon" style="background-image: url('images/page.png');"></div>
+					<b>Images implemented.</b><br>
+					These are the same mockup:<br>
+					<div style="text-align: center; margin: 10px;">
+						<img src="images/mockup.png" alt="A mockup of a rts game." style="width: 30%">
+						<img src="images/mockup.png" alt="A mockup of a rts game." style="width: 30%">
+						<img src="images/mockup.png" alt="A mockup of a rts game." style="width: 30%">
+					</div>
+				</div>
+			</div>
+		
+			<div class="entry">
+				<div class="title">June 28, 2011</div>
+				<div class="text blue">
+					<div class="icon"></div>
+					<b>Design Log:</b><br>
+					Seems to be implemented but must be cleaned a little.
+				</div>
+			</div>
+			
+			<div class="newbar">↓ Old Entries ↓</div>
+			
+			<div id="oldentries">
+			
+				<div class="entry">
+					<div class="title">March 4, 2011</div>
+					<div class="text green">
+						<div class="icon" style="background-image: url('images/page.png');"></div>
+						<b>Play Notes</b><br>
+						&nbsp;&nbsp;&nbsp;&nbsp;Issue<br>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Solution<br>
+					</div>
+					<div class="text green">
+						<div class="icon"></div>
+						<b>Experiment</b>
+					</div>
+				</div>
+				<div class="entry">
+					<div class="title">March 2, 2011</div>
+					<div class="text blue">
+						<div class="icon"></div>
+						Images should be able to go in here.
+					</div>
+					<div class="text red">
+						<div class="icon"></div>
+						<b>Bug Found in Pathfinding.</b>
+					</div>
+					<div class="text blue">
+						<div class="icon"></div>
+						<b>Important Information:</b><br>
+						The older is the entry, the most invisible it should be, so after around 5 days "minimize" entries (the user can still see the whole entry my hovering/clicking on it.
+					</div>
+					<div class="text green">
+						<div class="icon"></div>
+						<b>Something was implemented sucessfully.</b>
+					</div>
+				</div>
+			</div>
+			
+			<div class="entry">
+				<div class="title">Concept</div>
+				<div class="text orange">
+					<b>The Problem</b><br>
+					The concept of this project is this, this and this, and that. Or something like that.<br>
+					Should have some images in here too.<br>
+					<b>The Solution</b><br>
+					It could be solved like this or that.				
+				</div>
+			<canvas width="800" height="24" style="margin-top: -2px;"></canvas></div>
+			<div class="project-title">Project Title</div>
+		</div>
+	
+
+
+
+
+
+<!--
+     FILE ARCHIVED ON 12:53:41 Oct 6, 2013 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 19:31:18 Jan 15, 2016.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+</body></html>
